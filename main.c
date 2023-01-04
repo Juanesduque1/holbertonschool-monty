@@ -14,7 +14,7 @@ int main (int argc, char **argv)
 	unsigned int line_number = 0;
 	size_t size = 0;
 	ssize_t getsize = 0;
-	sstack_t *stack = NULL;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
