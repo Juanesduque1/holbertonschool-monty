@@ -27,11 +27,8 @@ int main (int argc, char **argv)
         exit(EXIT_FAILURE);
 	}
 
-	getsize = getline(&buff, &size, fd);
-	while (getsize != -1)
-	{
+	while (getline(&buff, &size, fd) != -1)
 		printf("%s", buff);
-	}
 
 	free(buff);
 	fclose(fd);
