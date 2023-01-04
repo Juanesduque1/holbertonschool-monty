@@ -7,16 +7,26 @@
 *Return: Always Zero
 */
 
-void f_pall(stack_t *stack, unsigned int line_number)
+void f_pall(sstack_t **stack, unsigned int line_number)
 {
+	sstack_t *aux;
+
+	(void)(line_number);
 
 	if (!stack)
 		return;
 
+	aux = *stack;
+
 	while (stack)
 	{
-		printf("%s\n", stack->n);
-		
+		printf("%d\n", aux->n);
+		aux = aux->next;
 	}
+
+}
+
+void f_push(sstack_t **stack, unsigned int line_number)
+{
 
 }

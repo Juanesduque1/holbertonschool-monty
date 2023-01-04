@@ -10,10 +10,9 @@
 int main(int argc, char **argv)
 {
 	FILE *fd;
-	char *buff = NULL;
+	char *buff = NULL, *input = NULL;
 	unsigned int line_number = 0;
 	size_t size = 0;
-	ssize_t getsize = 0;
 	sstack_t *stack = NULL;
 
 	if (argc != 2)
@@ -31,8 +30,10 @@ int main(int argc, char **argv)
 
 	while (getline(&buff, &size, fd) != -1)
 	{
-		/*get_opcode(buff, stack);*/
-		printf("%s", buff);
+		line_number++;
+		input = strtok(buff, " ");
+		if (input)
+			get_opcode(input, stack, line_number);
 	}
 
 	free(buff);

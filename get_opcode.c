@@ -1,22 +1,22 @@
 #include "monty.h"
 
-void get_opcode(char *buff, stack_t *stack)
+void get_opcode(char *buff, sstack_t *stack, unsigned int line_number)
 {
-	int i, line_number;
-	char *divstring;
+	int i;
 	instruction_t ops[] = {
 		{"push", f_push},
 		{"pall", f_pall},
 		{NULL,NULL}
 	};
-
-	divstring = strtok(&buff, ' ');
-
-	for (i = 0; ops[i] != NULL; i++)
+	/*printf("gets here\n%s %d\n", buff, line_number);*/
+	for (i = 0; ops[i].opcode != NULL; i++)
 	{
-		if (ops[i].opcode == divstring[0])
+		/*printf("hi\n");*/
+		if (strcmp(ops[i].opcode, buff) == 0)
 		{
-			ops[i].f(stack, line_number);
+			/*printf("enters\n");*/
+			ops[i].f(&stack, line_number);
+			return;
 		}
 	}
 }
