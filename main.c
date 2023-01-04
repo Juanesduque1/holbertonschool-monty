@@ -11,13 +11,14 @@ int main (int argc, char **argv)
 {
 	FILE *fd;
 	char *buff = NULL;
+	unsigned int line_number = 0;
 	size_t size = 0;
 	ssize_t getsize = 0;
-	stack_t *stack = NULL;
+	sstack_t *stack = NULL;
 
 	if (argc != 2)
 	{
-		dprintf(2, "USAGE: monty file");
+		dprintf(2, "USAGE: monty file\n");
         exit(EXIT_FAILURE);
 	}
 	fd = fopen(argv[1], "r+");
@@ -30,7 +31,7 @@ int main (int argc, char **argv)
 
 	while (getline(&buff, &size, fd) != -1)
 	{
-		get_opcode(buff, stack);
+		/*get_opcode(buff, stack);*/
 		printf("%s", buff);
 	}
 
