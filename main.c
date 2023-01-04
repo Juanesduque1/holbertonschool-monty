@@ -7,14 +7,14 @@
 *Return: Always Zero
 */
 
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
 	FILE *fd;
 	char *buff = NULL;
 	unsigned int line_number = 0;
 	size_t size = 0;
 	ssize_t getsize = 0;
-	stack_t *stack = NULL;
+	sstack_t *stack = NULL;
 
 	if (argc != 2)
 	{
