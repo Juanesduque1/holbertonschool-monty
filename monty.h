@@ -27,7 +27,7 @@ typedef struct stack_s
 	int n;
 	struct stack_s *prev;
 	struct stack_s *next;
-} sstack_t;
+} stack_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -44,5 +44,6 @@ typedef struct instruction_s
 } instruction_t;
 
 /* Prototypes */
+void get_opcode(char *opcode, stack_t *stack);
 
 #endif

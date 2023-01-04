@@ -13,6 +13,7 @@ int main (int argc, char **argv)
 	char *buff = NULL;
 	size_t size = 0;
 	ssize_t getsize = 0;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -28,7 +29,10 @@ int main (int argc, char **argv)
 	}
 
 	while (getline(&buff, &size, fd) != -1)
+	{
+		get_opcode(buff, stack);
 		printf("%s", buff);
+	}
 
 	free(buff);
 	fclose(fd);
