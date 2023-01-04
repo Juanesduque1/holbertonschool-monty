@@ -2,7 +2,7 @@
 
 /**
 *main - Main function
-*@argc: Quantity of arguments that enter the function
+*@argc: Quantity of arguments that enters the function
 *@argv: Arguments
 *Return: Always Zero
 */
@@ -32,8 +32,9 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 		input = strtok(buff, " ");
+		/*printf("%s\n", input);*/
 		if (input)
-			get_opcode(input, stack, line_number);
+			get_opcode(input, &stack, line_number);
 	}
 
 	free(buff);

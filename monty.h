@@ -44,8 +44,9 @@ typedef struct instruction_s
 } instruction_t;
 
 /* Prototypes */
-void get_opcode(char *buff, sstack_t *stack, unsigned int line_number);
+void get_opcode(char *buff, sstack_t **stack, unsigned int line_number);
 void f_pall(sstack_t **stack, unsigned int line_number);
 void f_push(sstack_t **stack, unsigned int line_number);
+void f_pint (sstack_t **stack, unsigned int line_number);
 
 #endif
