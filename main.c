@@ -10,8 +10,8 @@
 int main(int argc, char **argv)
 {
 	FILE *fd;
-	char *buff = NULL, *input = NULL;
 	unsigned int line_number = 0;
+	char *buff;
 	size_t size = 0;
 	sstack_t *stack = NULL;
 
@@ -31,10 +31,10 @@ int main(int argc, char **argv)
 	while (getline(&buff, &size, fd) != -1)
 	{
 		line_number++;
-		input = strtok(buff, " ");
-		/*printf("%s\n", input);*/
+		input = _divstring(buff,"\n\t\r ");
+		printf("and here");
 		if (input)
-			get_opcode(input, &stack, line_number);
+			get_opcode(input[0], &stack, line_number);
 	}
 
 	free(buff);

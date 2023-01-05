@@ -29,20 +29,31 @@ void f_pall(sstack_t **stack, unsigned int line_number)
 
 void f_push(sstack_t **stack, unsigned int line_number)
 {
-	sstack_t *new;
-	char integer;
+	sstack_t *aux = NULL;
+	int integer;
 
-	printf("hello\n");
-	new = malloc(sizeof(sstack_t));
-	if (!new)
+	aux = malloc(sizeof(sstack_t));
+	if (aux == NULL)
 	{
+		free(aux);
 		dprintf(2, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
-	new->n = atoi(&integer);
-	new->prev = NULL;
-	new->next = *stack;
+	integer = atoi(input[1]);
+	if (integer == 0)
+	{
+		dprintf(STDERR_FILENO, "L%i: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	aux->n = integer;
+	aux->prev = NULL;
+	aux->next = *stack;
+
+	if (*stack != NULL)
+		(*stack)->prev = aux;
+	*stack = aux;
 }
 
 /**
@@ -60,4 +71,29 @@ void f_pint(sstack_t **stack, unsigned int line_number)
 	}
 
 	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * f_pop- Removes the top element of the stack
+ * @stack: Stack of nodes
+ * @line_number: Line where the instruction is located
+ */
+
+void f_pop(sstack_t **stack, unsigned int line_number)
+{
+	sstack_t *aux = *stack;
+
+	if (!*stack)
+	{
+		dprintf(2, "L%i: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if ((*stack)->next != NULL)
+	{
+		*stack = aux->next;
+		(*stack)->prev = NULL;
+	}
+	else
+		*stack = NULL;
 }
