@@ -32,7 +32,6 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 		input = _divstring(buff,"\n\t\r ");
-		printf("and here");
 		if (input)
 			get_opcode(input[0], &stack, line_number);
 	}
