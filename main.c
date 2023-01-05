@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	unsigned int line_number = 0;
 	char *buff;
 	size_t size = 0;
-	sstack_t *stack = NULL;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{

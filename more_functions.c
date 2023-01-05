@@ -6,8 +6,25 @@
  * @line_number: Line where the instruction is located
  */
 
-void f_swap(sstack_t **stack, unsigned int line_number)
+void f_swap(stack_t **stack, unsigned int line_number)
 {
+	stack_t *head = *stack;
+	stack_t *aux = *stack;
+
+	if (!*stack)
+	{
+		dprintf(2, "L%i: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	head = head->next;
+	head->prev = NULL;
+
+	aux->next = head->next;
+	head->next = aux;
+	(head->next)->prev = head;
+
+	*stack = head;
 }
 
 /**
@@ -16,8 +33,20 @@ void f_swap(sstack_t **stack, unsigned int line_number)
  * @line_number: Line where the instruction is located
  */
 
-void f_add(sstack_t **stack, unsigned int line_number)
+void f_add(stack_t **stack, unsigned int line_number)
 {
+	stack_t *aux = *stack;
+
+	if (!*stack)
+	{
+		dprintf(2, "L%i: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	(aux->next)->n += aux->n;
+	f_pop(&aux, line_number);
+
+	*stack = aux;
 }
 
 /**
@@ -26,7 +55,7 @@ void f_add(sstack_t **stack, unsigned int line_number)
  * @line_number: Line where the instruction is located
  */
 
-void f_nop(sstack_t **stack, unsigned int line_number)
+void f_nop(stack_t **stack, unsigned int line_number)
 {
 	(void)(*stack);
 	(void)(line_number);

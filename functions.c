@@ -6,9 +6,9 @@
  * @line_number: Line where the instruction is located
  */
 
-void f_pall(sstack_t **stack, unsigned int line_number)
+void f_pall(stack_t **stack, unsigned int line_number)
 {
-	sstack_t *aux;
+	stack_t *aux;
 
 	(void)(line_number);
 
@@ -27,12 +27,12 @@ void f_pall(sstack_t **stack, unsigned int line_number)
  * @line_number: Line where the instruction is located
  */
 
-void f_push(sstack_t **stack, unsigned int line_number)
+void f_push(stack_t **stack, unsigned int line_number)
 {
-	sstack_t *aux = NULL;
+	stack_t *aux = NULL;
 	int integer;
 
-	aux = malloc(sizeof(sstack_t));
+	aux = malloc(sizeof(stack_t));
 	if (aux == NULL)
 	{
 		free(aux);
@@ -62,7 +62,7 @@ void f_push(sstack_t **stack, unsigned int line_number)
  * @line_number: Line where the instruction is located
  */
 
-void f_pint(sstack_t **stack, unsigned int line_number)
+void f_pint(stack_t **stack, unsigned int line_number)
 {
 	if (!stack)
 	{
@@ -79,9 +79,9 @@ void f_pint(sstack_t **stack, unsigned int line_number)
  * @line_number: Line where the instruction is located
  */
 
-void f_pop(sstack_t **stack, unsigned int line_number)
+void f_pop(stack_t **stack, unsigned int line_number)
 {
-	sstack_t *aux = *stack;
+	stack_t *aux = *stack;
 
 	if (!*stack)
 	{

@@ -17,7 +17,7 @@ char **input;
 
 /* Structures */
 /**
- * struct sstack_s - doubly linked list representation of a stack (or queue)
+ * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
  * @next: points to the next element of the stack (or queue)
@@ -30,7 +30,7 @@ typedef struct stack_s
 	int n;
 	struct stack_s *prev;
 	struct stack_s *next;
-} sstack_t;
+} stack_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -43,18 +43,18 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(sstack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /* Prototypes */
-void get_opcode(char *buff, sstack_t **stack, unsigned int line_number);
+void get_opcode(char *buff, stack_t **stack, unsigned int line_number);
 char **_divstring(char *string_pathcpy, char *separator);
-void f_pall(sstack_t **stack, unsigned int line_number);
-void f_push(sstack_t **stack, unsigned int line_number);
-void f_pint(sstack_t **stack, unsigned int line_number);
-void f_pop(sstack_t **stack, unsigned int line_number);
-void f_swap(sstack_t **stack, unsigned int line_number);
-void f_add(sstack_t **stack, unsigned int line_number);
-void f_nop(sstack_t **stack, unsigned int line_number);
+void f_pall(stack_t **stack, unsigned int line_number);
+void f_push(stack_t **stack, unsigned int line_number);
+void f_pint(stack_t **stack, unsigned int line_number);
+void f_pop(stack_t **stack, unsigned int line_number);
+void f_swap(stack_t **stack, unsigned int line_number);
+void f_add(stack_t **stack, unsigned int line_number);
+void f_nop(stack_t **stack, unsigned int line_number);
 
 #endif
