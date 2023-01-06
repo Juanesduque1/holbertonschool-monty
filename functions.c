@@ -41,7 +41,7 @@ void f_push(stack_t **stack, unsigned int line_number)
 	}
 
 	integer = atoi(input[1]);
-	if (integer == 0 || !stack || !*stack || !input[1])
+	if (integer == 0 || !stack || !*stack)
 	{
 		dprintf(2, "L%i: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
