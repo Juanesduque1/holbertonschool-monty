@@ -8,16 +8,13 @@
 
 void f_pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *aux;
 
 	(void)(line_number);
 
-	aux = *stack;
-
-	while (aux)
+	while (*stack)
 	{
-		printf("%d\n", aux->n);
-		aux = aux->next;
+		printf("%d\n", (*stack)->n);
+		stack = &(*stack)->next;
 	}
 }
 
