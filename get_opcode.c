@@ -38,6 +38,14 @@ char **_divstring(char *string, char *separator)
 	char *t, **array;
 
 	array = (char **)calloc(100, sizeof(char *));
+
+	if (!array)
+	{
+		free(array);
+		dprintf(2, "Error: calloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+
 	while (string[i])
 		i++;
 	while ((t = strtok(string, separator)) != NULL)

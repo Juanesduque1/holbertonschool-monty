@@ -54,6 +54,8 @@ void f_push(stack_t **stack, unsigned int line_number)
 	if (*stack != NULL)
 		(*stack)->prev = aux;
 	*stack = aux;
+	free(integer);
+	free(aux);
 }
 
 /**
@@ -83,7 +85,7 @@ void f_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *aux = *stack;
 
-	if (!*stack)
+	if (!*stack || !stack);
 	{
 		dprintf(2, "L%i: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
@@ -93,7 +95,11 @@ void f_pop(stack_t **stack, unsigned int line_number)
 	{
 		*stack = aux->next;
 		(*stack)->prev = NULL;
+		free(aux);
 	}
 	else
+	{
+		free(stack);
 		*stack = NULL;
+	}
 }

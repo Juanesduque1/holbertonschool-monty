@@ -37,6 +37,7 @@ int main(int argc, char **argv)
 	}
 
 	free(buff);
+	free_stack(stack);
 	fclose(fd);
 	return (0);
 }

@@ -11,7 +11,7 @@ void f_swap(stack_t **stack, unsigned int line_number)
 	stack_t *head = *stack;
 	stack_t *aux = *stack;
 
-	if (!*stack)
+	if (!*stack || !stack || !head->next)
 	{
 		dprintf(2, "L%i: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -37,7 +37,7 @@ void f_add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *aux = *stack;
 
-	if (!*stack)
+	if (!*stack || !stack || !aux->next)
 	{
 		dprintf(2, "L%i: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -59,4 +59,21 @@ void f_nop(stack_t **stack, unsigned int line_number)
 {
 	(void)(*stack);
 	(void)(line_number);
+}
+
+/**
+ * free_stack - Frees a stack when terminating
+ * @stack: Stack
+ */
+
+void free_stack(stack_t *stack)
+{
+	stack_t *aux;
+
+	while (stack != NULL)
+	{
+		aux = stack->next;
+		free(stack);
+		stack = aux;
+	}
 }
