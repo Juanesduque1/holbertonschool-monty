@@ -51,6 +51,8 @@ void f_push(stack_t **stack, unsigned int line_number)
 	if (*stack != NULL)
 		(*stack)->prev = aux;
 	*stack = aux;
+
+	aux = NULL;
 }
 
 /**
@@ -94,7 +96,7 @@ void f_pop(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		free(stack);
+		free(*stack);
 		*stack = NULL;
 	}
 }
