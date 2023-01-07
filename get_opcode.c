@@ -35,7 +35,7 @@ void get_opcode(char *buff, stack_t **stack, unsigned int line_number)
 char **_divstring(char *string, char *separator)
 {
 	int i = 0, j = 0;
-	char *t, **array, **aux;
+	char *t, **array;
 
 	array = (char **)calloc(100, sizeof(char *));
 
@@ -46,15 +46,13 @@ char **_divstring(char *string, char *separator)
 		exit(EXIT_FAILURE);
 	}
 
-	aux = array;
 	while (string[i])
 		i++;
 	while ((t = strtok(string, separator)) != NULL)
 	{
-		aux[j] = t;
+		array[j] = t;
 		string = NULL;
 		j++;
 	}
-	free(array);
-	return (aux);
+	return (array);
 }
