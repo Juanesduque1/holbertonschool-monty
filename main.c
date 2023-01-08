@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	while (getline(&buff, &size, fd) != -1)
 	{
 		line_number++;
-		input = _divstring(buff, "\0\n\t\r ");
+		input = _divstring(buff, "\n\t\r ");
 		if (input)
 			get_opcode(input[0], &stack, line_number);
 
