@@ -34,6 +34,8 @@ int main(int argc, char **argv)
 		input = _divstring(buff,"\n\t\r ");
 		if (input)
 			get_opcode(input[0], &stack, line_number);
+
+		free(input);
 	}
 
 	free(buff);

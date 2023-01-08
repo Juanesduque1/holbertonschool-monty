@@ -41,6 +41,7 @@ void f_push(stack_t **stack, unsigned int line_number)
 	if (integer == 0)
 	{
 		dprintf(2, "L%i: usage: push integer\n", line_number);
+		free(aux);
 		exit(EXIT_FAILURE);
 	}
 
